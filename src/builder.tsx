@@ -236,7 +236,7 @@ const DocusealBuilder = ({
       {React.createElement('docuseal-builder', {
         'data-token': token,
         'data-preview': booleanToAttr(preview || previewMode),
-        'data-input-mode': inputMode,
+        'data-input-mode': booleanToAttr(inputMode),
         'data-language': language,
         'data-autosave': booleanToAttr(autosave),
         'data-send-button-text': sendButtonText,
