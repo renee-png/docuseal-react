@@ -1,6 +1,6 @@
 # DocuSeal React Components
 
-[📙 Documentation](https://www.docuseal.com/docs/embedded/form#react) | [💻 Examples](https://github.com/docusealco/docuseal-react-examples) | [🚀 Demo App](https://embed.docuseal.tech/)
+[📙 Documentation](https://www.docuseal.com/docs/embedded/form/react) | [💻 Examples](https://github.com/docusealco/docuseal-react-examples) | [🚀 Demo App](https://embed.docuseal.tech/)
 
 This package provides a convenient way to embed [DocuSeal](https://www.docuseal.com) into React apps. Sign documents and create document forms directly in your apps.
 

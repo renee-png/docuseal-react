@@ -41,6 +41,121 @@ export type DocusealBuilderSubmitter = {
   phone?: string,
 }
 
+export type DocusealBuilderSendData = {
+  id: number,
+  created_at: string,
+  archived_at: string | null,
+  template_submitters: Array<{
+    name: string,
+    uuid: string,
+    is_requester?: boolean,
+    linked_to_uuid?: string | null,
+    order?: number,
+    invite_via_field_uuid?: string | null,
+    optional_invite_by_uuid?: string | null,
+    invite_by_uuid?: string | null,
+    email?: string,
+  }>,
+  template: {
+    id: number,
+    name: string,
+    external_id: string | null,
+    created_at: string,
+  },
+  submitters: Array<{
+    id: number,
+    uuid: string,
+    email: string,
+    completed_at: string | null,
+    opened_at: string | null,
+    sent_at: string | null,
+    status_event_at: string,
+    status: string,
+  }>,
+}
+
+type DocusealBuilderTemplateData = {
+  id: number,
+  author_id: number,
+  folder_id: number | null,
+  external_id: string | null,
+  name: string,
+  slug: string,
+  source: string | null,
+  archived_at: string | null,
+  created_at: string,
+  updated_at: string,
+  shared_link: boolean,
+  preferences: Record<string, unknown> | null,
+  variables_schema: Record<string, unknown> | null,
+  schema: Array<{
+    attachment_uuid: string,
+    name: string,
+    google_drive_file_id?: string,
+    dynamic?: boolean,
+    conditions?: Array<{
+      field_uuid: string,
+      value: string,
+      action: string,
+      operation: string,
+    }>,
+  }>,
+  fields: Array<{
+    uuid: string,
+    submitter_uuid: string,
+    name: string,
+    type: string,
+    required: boolean,
+    readonly?: boolean,
+    default_value?: string | string[] | null,
+    title?: string,
+    description?: string,
+    prefillable?: boolean,
+    preferences?: Record<string, unknown>,
+    options?: Array<{ value: string, uuid: string }>,
+    validation?: {
+      message?: string,
+      pattern?: string,
+      min?: number,
+      max?: number,
+      step?: number,
+    },
+    conditions?: Array<{
+      field_uuid: string,
+      value: string,
+      action: string,
+      operation: string,
+    }>,
+    areas?: Array<{
+      uuid: string,
+      x: number,
+      y: number,
+      w: number,
+      h: number,
+      cell_w?: number,
+      attachment_uuid: string,
+      option_uuid?: string,
+      page: number,
+    }>,
+  }>,
+  submitters: Array<{
+    name: string,
+    uuid: string,
+    is_requester?: boolean,
+    linked_to_uuid?: string | null,
+    order?: number,
+    invite_via_field_uuid?: string | null,
+    optional_invite_by_uuid?: string | null,
+    invite_by_uuid?: string | null,
+    email?: string,
+  }>,
+}
+
+export type DocusealBuilderLoadData = DocusealBuilderTemplateData
+export type DocusealBuilderUploadData = DocusealBuilderTemplateData
+export type DocusealBuilderSaveData = DocusealBuilderTemplateData
+export type DocusealBuilderChangeData = DocusealBuilderTemplateData
+
 export type DocusealBuilderProps = {
   token: string,
   host?: string,
@@ -73,11 +188,11 @@ export type DocusealBuilderProps = {
   withSignatureId?: boolean,
   withRevisions?: boolean,
   withAddPageButton?: boolean,
-  onLoad?: (detail: any) => void,
-  onUpload?: (detail: any) => void,
-  onSend?: (detail: any) => void,
-  onSave?: (detail: any) => void,
-  onChange?: (detail: any) => void,
+  onLoad?: (data: DocusealBuilderLoadData) => void,
+  onUpload?: (data: DocusealBuilderUploadData) => void,
+  onSend?: (data: DocusealBuilderSendData) => void,
+  onSave?: (data: DocusealBuilderSaveData) => void,
+  onChange?: (data: DocusealBuilderChangeData) => void,
   customButton?: {
     title: string,
     url: string,
