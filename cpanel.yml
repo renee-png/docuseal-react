@@ -1,5 +1,0 @@
----
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home/avriahost/repositories/avriacam
-    - /bin/cp -R images $DEPLOYPATH
